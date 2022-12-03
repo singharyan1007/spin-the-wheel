@@ -54,7 +54,8 @@ export default class Wheel extends React.Component {
 
       return(
         <div style={cssProperties}>
-        <h1 className="text-center">Click to spin</h1>
+
+        <h1 className="text-center p-5 underline font-bold text-xl tracking-widest" style={{'textAlign':'center'}}>Click to spin</h1>
         <div className="wheel-container">
           <div
             lg={true}
@@ -64,7 +65,7 @@ export default class Wheel extends React.Component {
           >
             {items.map((item, index) => (
               <div
-                className="wheel-item"
+                className="wheel-item" 
                 key={index}
                 style={{ "--item-nb": index }}
               >

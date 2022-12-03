@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import well from '../assets/well.png'
 const Login = () => {
-  const [email, setEmail] = useState(" ");
-  const [phone, setPhone] = useState();
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("email", email);
     localStorage.setItem("phone", phone);
-    navigate("/home");
+    if(email !== null ){
+      navigate("/home");
+    }
   };
   return (
     <div className="relative min-h-screen flex ">
       <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
         <div class="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative">
-          <div class="absolute bg-gradient-to-b from-green-600 to-green-300 opacity-75 inset-0 z-0"></div>
+          <div class="absolute bg-gradient-to-b from-green-600 to-green-400 opacity-75 inset-0 z-0"></div>
           <div class="w-full  max-w-md z-10">
             <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
               Spin The Wheel
@@ -29,6 +31,7 @@ const Login = () => {
         <div class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full  xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
           <div class="max-w-md w-full space-y-8">
             <div class="text-center">
+              <img src={well} className="w-full  sm:block md:hidden lg:hidden " />
               <h2 class="mt-6 text-3xl font-bold text-gray-900">
                 Login to play!
               </h2>
@@ -61,7 +64,7 @@ const Login = () => {
                 <input
                   class=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
                   type="mail"
-                  placeholder="XXXXXXXXXX"
+                  placeholder="mail@xyz.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -84,7 +87,7 @@ const Login = () => {
               <div>
                 <button
                   type="submit"
-                  class="w-full flex justify-center bg-gradient-to-r from-indigo-500 to-blue-600  hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
+                  class="w-full flex justify-center bg-gradient-to-r from-green-500 to-green-300  hover:bg-gradient-to-l hover:from-green-500 hover:to-green-600 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500"
                 >
                   Sign in
                 </button>
